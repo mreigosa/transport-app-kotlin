@@ -1,0 +1,57 @@
+[
+  {
+    "id": "402:11059006",
+    "name": "Rossio",
+    "x": -9.1424,
+    "y": 38.71497,
+    "scheduledArrival": 0,
+    "locationType": 0,
+    "companyZoneId": 402,
+    "lat": 38.71497,
+    "lon": -9.1424
+  },
+  {
+    "id": "378:M28",
+    "name": "ROSSIO",
+    "x": -9.13796,
+    "y": 38.71402,
+    "scheduledArrival": 0,
+    "locationType": 0,
+    "companyZoneId": 378,
+    "lat": 38.71402,
+    "lon": -9.13796
+  },
+  {
+    "id": "378:M08",
+    "name": "SÃO SEBASTIÃO",
+    "x": -9.15365,
+    "y": 38.734,
+    "scheduledArrival": 0,
+    "locationType": 0,
+    "companyZoneId": 378,
+    "lat": 38.734,
+    "lon": -9.15365
+  },
+  {
+    "id": "378:M07",
+    "name": "PRAÇA DE ESPANHA",
+    "x": -9.15936,
+    "y": 38.7377,
+    "scheduledArrival": 0,
+    "locationType": 0,
+    "companyZoneId": 378,
+    "lat": 38.7377,
+    "lon": -9.15936
+  },
+  {
+    "id": "378:M09",
+    "name": "PARQUE",
+    "x": -9.15015,
+    "y": 38.72914,
+    "scheduledArrival": 0,
+    "locationType": 0,
+    "companyZoneId": 378,
+    "lat": 38.72914,
+    "lon": -9.15015
+  }
+]
