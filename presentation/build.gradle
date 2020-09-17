@@ -3,6 +3,7 @@ apply plugin: 'kotlin'
 
 dependencies {
     api project(':domain')
+    testImplementation project(':domain').sourceSets.test.output
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
