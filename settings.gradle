@@ -1,2 +1,4 @@
+include ':data'
+include ':network'
 include ':app'
 rootProject.name = "Transport App"
