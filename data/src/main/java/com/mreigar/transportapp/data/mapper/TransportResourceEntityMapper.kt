@@ -6,10 +6,10 @@ import com.mreigar.transportapp.domain.model.TransportResource
 class TransportResourceEntityMapper : EntityMapper<TransportResourceEntity, TransportResource> {
 
     override fun mapFromEntity(dataEntity: TransportResourceEntity) = with(dataEntity) {
-        TransportResource(id = id, name = name, latitude = latitude, longitude = longitude, companyZoneId = companyZoneId)
+        TransportResource(id = id, name = name, latitude = latitude, longitude = longitude, type = type)
     }
 
     override fun mapToEntity(domainEntity: TransportResource) = with(domainEntity) {
-        TransportResourceEntity(id = id, name = name, latitude = latitude, longitude = longitude, companyZoneId = companyZoneId)
+        TransportResourceEntity(id = id, name = name, latitude = latitude, longitude = longitude, type = type)
     }
 }

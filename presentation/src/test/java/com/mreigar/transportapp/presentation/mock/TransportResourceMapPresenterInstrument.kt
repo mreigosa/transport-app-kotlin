@@ -1,9 +1,9 @@
 package com.mreigar.transportapp.presentation.mock
 
-import com.mreigar.transportapp.domain.mock.DomainInstrument
-import com.mreigar.transportapp.domain.mock.GetTransportsAroundLocationUseCaseInstrument.givenGetTransportsAroundLocationUseCase
-import com.mreigar.transportapp.domain.mock.RepositoryStatus
 import com.mreigar.transportapp.presentation.BaseCallbackResult
+import com.mreigar.transportapp.domain.mock.DomainInstrument.givenInvoker
+import com.mreigar.transportapp.domain.mock.RepositoryStatus
+import com.mreigar.transportapp.presentation.mock.GetTransportsAroundLocationUseCaseInstrument.givenGetTransportsAroundLocationUseCase
 import com.mreigar.transportapp.presentation.model.TransportResourceViewEntity
 import com.mreigar.transportapp.presentation.presenter.transportresourcemap.TransportResourceMapPresenter
 import com.mreigar.transportapp.presentation.presenter.transportresourcemap.TransportResourceMapViewTranslator
@@ -16,7 +16,7 @@ object TransportResourceMapPresenterInstrument {
     ) = TransportResourceMapPresenter(
         givenTransportResourceMapViewTranslator(callbackResult),
         givenGetTransportsAroundLocationUseCase(repositoryStatus),
-        DomainInstrument.givenInvoker()
+        givenInvoker()
     )
 
     private fun givenTransportResourceMapViewTranslator(callbackResult: TransportResourceMapCallbackResult): TransportResourceMapViewTranslator =
