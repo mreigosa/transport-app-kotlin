@@ -1,4 +1,4 @@
-package com.mreigar.transportapp.presentation.test
+package com.mreigar.transportapp.presentation.mapper
 
 import com.mreigar.transportapp.domain.model.TransportResource
 import com.mreigar.transportapp.domain.model.TransportResourceType

@@ -15,11 +15,21 @@ class TransportResourceMapPresenterTest : AutoCloseKoinTest() {
 
     private lateinit var presenter: TransportResourceMapPresenter
 
+
+    @Test
+    fun `given presenter, when map region changes, map is updated based on new coordinates`() {
+        presenter = givenTransportResourceMapPresenter(callbackResult, RepositoryStatus.SUCCESS)
+
+        presenter.onMapRegionChanged()
+
+        assertThat(callbackResult.isMethodFired(TransportResourceMapViewMethod.GET_MAP_VISIBLE_REGION)).isTrue()
+    }
+
     @Test
     fun `given presenter, when data is retrieved, it is shown`() {
         presenter = givenTransportResourceMapPresenter(callbackResult, RepositoryStatus.SUCCESS)
 
-        presenter.onReady()
+        presenter.onMapRegionChanged()
 
         assertThat(callbackResult.isMethodFired(TransportResourceMapViewMethod.SHOW_TRANSPORT_RESOURCES)).isTrue()
     }
@@ -28,7 +38,7 @@ class TransportResourceMapPresenterTest : AutoCloseKoinTest() {
     fun `given presenter, when data is not retrieved, error is shown`() {
         presenter = givenTransportResourceMapPresenter(callbackResult, RepositoryStatus.ERROR)
 
-        presenter.onReady()
+        presenter.onMapRegionChanged()
 
         assertThat(callbackResult.isMethodFired(TransportResourceMapViewMethod.SHOW_ERROR)).isTrue()
     }

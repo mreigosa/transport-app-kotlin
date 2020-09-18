@@ -16,13 +16,18 @@ class TransportResourceMapPresenter(
 
     private val mapper: TransportResourceViewEntityMapper = TransportResourceViewEntityMapper()
 
-    override fun onReady() {
-        super.onReady()
-        fetchTransportResources()
+    fun onMapRegionChanged() {
+        view()?.getMapVisibleRegion()?.let {
+            fetchTransportResources(it.northEastLatitude, it.northEastLongitude, it.southWestLatitude, it.southWesLongitude)
+        }
     }
 
-    private fun fetchTransportResources() {
-        val params = GetTransportsAroundLocationUseCaseParams("38.711046,-9.160096", "38.739429,-9.137115")
+    private fun fetchTransportResources(northEastLatitude: Double, northEastLongitude: Double, southWestLatitude: Double, southWesLongitude: Double) {
+        val params = GetTransportsAroundLocationUseCaseParams(
+            leftLatLong = "$southWestLatitude,$southWesLongitude",
+            rightLatLong = "$northEastLatitude,$northEastLongitude",
+        )
+
         invoker.execute(this, getTransportsAroundLocationUseCase withParams params) { result ->
             when (result) {
                 is Success -> view()?.showTransportResources(result.data.map { mapper.mapToViewEntity(it) })
