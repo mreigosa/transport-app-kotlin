@@ -9,7 +9,7 @@ import org.koin.dsl.module
 
 object DomainModules {
 
-    val useCaseModule = module {
+    val domainModule = module {
         factory<Invoker> { UseCaseInvoker(get()) }
         single<DispatcherProvider> { DispatcherProviderImpl() }
 

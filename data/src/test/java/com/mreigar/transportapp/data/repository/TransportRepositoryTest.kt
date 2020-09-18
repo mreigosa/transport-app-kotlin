@@ -4,6 +4,7 @@ import com.mreigar.transportapp.data.datasource.TransportRemoteDataSourceContrac
 import com.mreigar.transportapp.data.model.TransportResourceEntity
 import com.mreigar.transportapp.domain.executor.Error
 import com.mreigar.transportapp.domain.executor.Success
+import com.mreigar.transportapp.domain.model.TransportResourceType
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 
@@ -14,7 +15,7 @@ class TransportRepositoryTest {
         val repository = TransportRepository(
             remoteDataSource = object : TransportRemoteDataSourceContract {
                 override fun getTransportsAroundLocation(leftLatLong: String, rightLatLong: String): List<TransportResourceEntity> {
-                    return listOf(TransportResourceEntity("id", "name", 7.55f, -9.88f, 101))
+                    return listOf(TransportResourceEntity("id", "name", 7.55f, -9.88f, TransportResourceType.RESOURCE_402))
                 }
             }
         )
