@@ -8,15 +8,19 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.material.snackbar.Snackbar
 import com.google.maps.android.clustering.Cluster
 import com.google.maps.android.clustering.ClusterManager
 import com.mreigar.transportapp.R
+import com.mreigar.transportapp.gone
 import com.mreigar.transportapp.injection.injectActivity
+import com.mreigar.transportapp.networkConnectionAvailable
 import com.mreigar.transportapp.presentation.model.TransportResourceViewEntity
 import com.mreigar.transportapp.presentation.presenter.transportresourcemap.MapVisibleRegion
 import com.mreigar.transportapp.presentation.presenter.transportresourcemap.TransportResourceMapPresenter
 import com.mreigar.transportapp.presentation.presenter.transportresourcemap.TransportResourceMapViewTranslator
 import com.mreigar.transportapp.view.BaseActivity
+import com.mreigar.transportapp.visible
 import kotlinx.android.synthetic.main.activity_transport_resource_map.*
 
 
@@ -93,9 +97,7 @@ class TransportResourceMapActivity : BaseActivity<TransportResourceMapPresenter>
         }
     }
 
-    override fun showError() {
-
-    }
+    override fun showError() = Snackbar.make(transportMapLayout, getString(R.string.error_message), Snackbar.LENGTH_LONG).show()
 
     override fun onClusterItemClick(item: TransportResourceMapEntity): Boolean {
         showTransportResourceMapBanner(item.name, item.id)
@@ -105,6 +107,12 @@ class TransportResourceMapActivity : BaseActivity<TransportResourceMapPresenter>
     override fun onClusterClick(cluster: Cluster<TransportResourceMapEntity>?): Boolean {
         return true
     }
+
+    override fun isNetworkAvailable(): Boolean = this.networkConnectionAvailable()
+
+    override fun showNoInternetAvailable() = transportMapInternetError.visible()
+
+    override fun hideNoInternetAvailable() = transportMapInternetError.gone()
 
     private fun showTransportResourceMapBanner(title: String, subtitle: String) {
         transportResourceMapBannerTitle.text = title
@@ -132,4 +140,5 @@ class TransportResourceMapActivity : BaseActivity<TransportResourceMapPresenter>
         constraint.applyTo(transportMapLayout)
         bannerExpanded = false
     }
+
 }
