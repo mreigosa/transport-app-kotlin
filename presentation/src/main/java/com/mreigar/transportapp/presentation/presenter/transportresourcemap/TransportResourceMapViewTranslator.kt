@@ -6,6 +6,9 @@ interface TransportResourceMapViewTranslator {
     fun showTransportResources(transportResources: List<TransportResourceViewEntity>)
     fun showError()
     fun getMapVisibleRegion(): MapVisibleRegion
+    fun isNetworkAvailable(): Boolean
+    fun showNoInternetAvailable()
+    fun hideNoInternetAvailable()
 }
 
 data class MapVisibleRegion(

@@ -42,4 +42,24 @@ class TransportResourceMapPresenterTest : AutoCloseKoinTest() {
 
         assertThat(callbackResult.isMethodFired(TransportResourceMapViewMethod.SHOW_ERROR)).isTrue()
     }
+
+    @Test
+    fun `given presenter, when no internet connection available, banner is shown`() {
+        presenter = givenTransportResourceMapPresenter(callbackResult, networkAvailable = false)
+
+        presenter.onMapRegionChanged()
+
+        assertThat(callbackResult.isMethodFired(TransportResourceMapViewMethod.IS_NETWORK_AVAILABLE)).isTrue()
+        assertThat(callbackResult.isMethodFired(TransportResourceMapViewMethod.SHOW_NO_INTERNET_AVAILABLE)).isTrue()
+    }
+
+    @Test
+    fun `given presenter, when internet connection available, banner is hidden`() {
+        presenter = givenTransportResourceMapPresenter(callbackResult, networkAvailable = true)
+
+        presenter.onMapRegionChanged()
+
+        assertThat(callbackResult.isMethodFired(TransportResourceMapViewMethod.IS_NETWORK_AVAILABLE)).isTrue()
+        assertThat(callbackResult.isMethodFired(TransportResourceMapViewMethod.HIDE_NO_INTERNET_AVAILABLE)).isTrue()
+    }
 }

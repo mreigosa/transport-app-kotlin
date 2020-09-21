@@ -17,8 +17,13 @@ class TransportResourceMapPresenter(
     private val mapper: TransportResourceViewEntityMapper = TransportResourceViewEntityMapper()
 
     fun onMapRegionChanged() {
-        view()?.getMapVisibleRegion()?.let {
-            fetchTransportResources(it.northEastLatitude, it.northEastLongitude, it.southWestLatitude, it.southWesLongitude)
+        if (view()?.isNetworkAvailable() == true) {
+            view()?.hideNoInternetAvailable()
+            view()?.getMapVisibleRegion()?.let {
+                fetchTransportResources(it.northEastLatitude, it.northEastLongitude, it.southWestLatitude, it.southWesLongitude)
+            }
+        } else {
+            view()?.showNoInternetAvailable()
         }
     }
 
